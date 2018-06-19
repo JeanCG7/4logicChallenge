@@ -1,0 +1,28 @@
+<form [formGroup]="evalForm">
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" name = "evalDate" [max]="maxDate" formControlName="evalDate" placeholder="Choose a date">
+  <mat-datepicker-toggle  matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<br>
+<div formArrayName="evals"> 
+  <div *ngFor="let evalu of evalForms.controls; let i=index" [formGroupName]="i">
+    <mat-form-field>
+      <input matInput placeholder="Grade" formControlName="grade">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Reason" formControlName="reason">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Customers" formControlName="idCustomer">
+        <mat-option *ngFor="let customer of customers" [value]="customer.id" >{{customer.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="warn" (click)="deleteEval(i)">Delete</button>
+  </div>
+  <button mat-raised-button color="primary" (click)="addEval()">Add Evaluation</button>  
+</div>
+<br>
+<button mat-raised-button color="primary" (click)="submitHandler()">Save</button>  
+</form>
