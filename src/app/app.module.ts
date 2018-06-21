@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { CreateCustomerComponent } from './create-customer/create-customer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-
-import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatChipsModule, MatDatepickerModule, MatNativeDateModule, MAT_DATE_LOCALE, MatCardModule, MatListModule, MatTableModule, MatTableDataSource, MatCheckbox} from '@angular/material';
+import swal from 'sweetalert';
+import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatChipsModule, MatDatepickerModule, MatNativeDateModule, MAT_DATE_LOCALE, MatCardModule, MatListModule, MatTableModule, MatTableDataSource, MatCheckbox, MatToolbarModule, MatMenuModule} from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientCustom } from 'src/app/service/http-client-custom';
@@ -15,6 +15,7 @@ import { CreateEvaluationComponent } from './create-evaluation/create-evaluation
 import { DialogEvaluationComponent } from './dialog-evaluation/dialog-evaluation.component';
 import { HomeCustomersComponent } from './home-customers/home-customers.component';
 import { CdkTableModule } from '@angular/cdk/table';
+import { HomeEvaluationComponent } from './home-evaluation/home-evaluation.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     CreateEvaluationComponent,
     DialogEvaluationComponent,
     HomeCustomersComponent,
+    HomeEvaluationComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,11 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatListModule,
     MatTableModule,
     CdkTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatCardModule,
+    
     
   ],
   entryComponents:[

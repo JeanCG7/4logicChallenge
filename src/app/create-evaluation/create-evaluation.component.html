@@ -1,6 +1,6 @@
 <form [formGroup]="evalForm">
 <mat-form-field>
-  <input matInput [matDatepicker]="picker" name = "evalDate" [max]="maxDate" formControlName="evalDate" placeholder="Choose a date">
+  <input matInput [matDatepicker]="picker" name = "evalDate" [(ngModel)]="evDate"  [max]="maxDate" formControlName="evalDate" placeholder="Choose a date">
   <mat-datepicker-toggle  matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
@@ -9,7 +9,7 @@
 <div formArrayName="evals"> 
   <div *ngFor="let evalu of evalForms.controls; let i=index" [formGroupName]="i">
     <mat-form-field>
-      <input matInput placeholder="Grade" formControlName="grade">
+      <input matInput placeholder="Grade" formControlName="grade" type="number" max="10" min="0">
     </mat-form-field>
     <mat-form-field>
         <input matInput placeholder="Reason" formControlName="reason">
@@ -24,5 +24,5 @@
   <button mat-raised-button color="primary" (click)="addEval()">Add Evaluation</button>  
 </div>
 <br>
-<button mat-raised-button color="primary" (click)="submitHandler()">Save</button>  
+<button mat-raised-button color="primary" (click)="submitHandler()" [disabled]=evalForm.invalid>Save</button>  
 </form>

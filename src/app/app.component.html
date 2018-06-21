@@ -1,10 +1,12 @@
-
-<ul>
-    <li><a routerLink="/" routerLinkActive="active">Customer List</a></li>
-    <li><a routerLink="/createCustomer" routerLinkActive="active">Customer Register</a></li>
-    <li><a routerLink="/createEval" routerLinkActive="active">Evaluation Register</a></li>
+<mat-toolbar>
+    <mat-menu></mat-menu>
+    <button routerLink="/" routerLinkActive="active" mat-menu-item>Customers</button>    
+    <button mat-menu-item routerLink="/createCustomer" routerLinkActive="active">Create Customer</button>    
+    <button mat-menu-item routerLink="/listEval" routerLinkActive="active">Evaluation</button>    
+    <button mat-menu-item routerLink="/createEval" routerLinkActive="active">Create Evaluation</button>    
     
-    </ul>
+</mat-toolbar>
+
 
 
 <router-outlet></router-outlet>

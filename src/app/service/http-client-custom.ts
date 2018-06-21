@@ -19,7 +19,12 @@ export class HttpClientCustom {
     headers = this.createAuthorizationHeader(headers);
     return this.http.get(url, {
       headers: {
-        'Authorization': 'forlogic-d2a24'
+        'Authorization': 'forlogic-d2a24',
+        "Access-Control-Allow-Credentials": "true",
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': 'true',
+        'Access-Control-Allow-Methods': ' GET, POST, PATCH, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
       }
     });
   }
@@ -41,7 +46,7 @@ export class HttpClientCustom {
 
   delete(url){
     let headers = new Headers();
-    headers = this.createAuthorizationHeader(headers);
+    headers = this.createAuthorizationHeader(headers);    
     return this.http.delete(url, {
       headers: {
         'Authorization': 'forlogic-d2a24',

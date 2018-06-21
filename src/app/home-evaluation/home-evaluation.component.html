@@ -1,0 +1,21 @@
+<form [formGroup]="dateForm">
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" name="registerDate" [max]="maxDate" formControlName="selectedDate" placeholder="Select Evaluation Month">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</form>
+<button mat-raised-button color="primary" (click)="getEvalsMonth()">Search Evaluations</button>
+<div class="cards" *ngIf="selectedEvaluations?.length > 0">
+  <mat-card *ngFor="let eval of selectedEvaluations">
+    <div *ngIf="eval.evalDate !== ''">
+      <button class ="delbut" mat-raised-button color="warn" (click)="deleteEval(eval.id)">Delete Evaluation</button>
+      <mat-card-title>Evaluation: {{eval.evalDate | date: 'dd-MM-yyyy'}}</mat-card-title>
+      <mat-card-subtitle>Average: {{eval.avg}}</mat-card-subtitle>
+      <mat-card *ngFor="let es of eval['evals']">
+        <mat-card-content> Grade:{{es.grade}}</mat-card-content>
+        <mat-card-content> Reason:{{es.reason}}</mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>

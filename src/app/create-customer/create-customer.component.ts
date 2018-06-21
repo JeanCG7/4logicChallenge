@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { getLocaleDateFormat } from '@angular/common/src/i18n/locale_data_api';
 import * as moment from 'moment';
+import swal from 'sweetalert';
+
 import { HttpClientCustom } from 'src/app/service/http-client-custom';
 import { ICustomer } from 'src/app/model/customer';
 
@@ -13,7 +15,7 @@ import { ICustomer } from 'src/app/model/customer';
 export class CreateCustomerComponent implements OnInit {
   customerForm: FormGroup;
   customers: ICustomer[] = [
-   ];
+  ];
 
   constructor(private fb: FormBuilder, private http: HttpClientCustom) { }
   maxDate = new Date();
@@ -46,23 +48,21 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   submitHandler() {
-    // console.log(this.http);
-    // const formValue = this.customerForm.value;
-    // this.http.post("http://desafio4devs.forlogic.net/api/customers", formValue).subscribe(data => {
-    //   console.log(data);
-    // });
+    const formValue = this.customerForm.value;
+    this.http.post("http://desafio4devs.forlogic.net/api/customers", formValue).subscribe(data => {
+      swal("Customer created sucefully");
+    });
     this.getData();
   }
 
-  getData(){
+  getData() {
     this.http.get("http://desafio4devs.forlogic.net/api/customers").
       subscribe(data => {
-         this.customers = Object.values(data);
-         console.log(this.customers);
+        this.customers = Object.values(data);
       });
   }
 
-  
+
 
 
 }
